@@ -1,0 +1,14 @@
+*.bak
+*.pak
+*.swo
+*.swp
+*.vdf
+
+mods/*
+production/speciesFixes/*
+speciesFixes/*
+steamcmd/*
+tmp/*
+
+changelog.txt
+

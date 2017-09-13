@@ -1,0 +1,8 @@
+{
+  "version": "1.4",
+  "author": "Bogon",
+  "description": "Adds deploy cinematics for unsupported modded species.",
+  "name": "1.3mechFix",
+  "friendlyName": "1.3 mech cinematic fix",
+  "priority": 999
+}

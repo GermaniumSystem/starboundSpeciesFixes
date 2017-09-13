@@ -1,0 +1,5 @@
+[
+  { "op": "test", "path": "/interactAction", "value": "openCockpitInterface" },
+  { "op": "replace", "path": "/interactAction", "value": "ScriptPane" },
+  { "op": "add", "path": "/interactData", "value": "/interface/cockpit/cockpit.config" }
+]
