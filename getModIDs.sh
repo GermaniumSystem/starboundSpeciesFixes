@@ -20,11 +20,6 @@ function getPage {
 }
 for NUM in $(seq 1 1000) ; do # We could just while true, but this adds an extra safety mechanism.
   echo "[INFO]: Requesting list page '${NUM}'"
-  #wget -q -O "workshopPages/list_${NUM}.html" "http://steamcommunity.com/workshop/browse/?appid=211820&browsesort=mostrecent&section=readytouseitems&actualsort=mostrecent&p=${NUM}"
-  #if grep -qi 'id="no_items"' "workshopPages/list_${NUM}.html" ; then
-  #  echo "[INFO]: End of list reached at page ${NUM}."
-  #  break
-  #fi
   if ! getPage $NUM ; then
     echo "[INFO]: End of list reached."
     break
@@ -32,7 +27,8 @@ for NUM in $(seq 1 1000) ; do # We could just while true, but this adds an extra
 done
 
 echo "[INFO]: Generating ID list."
-grep -E '^	*<a href="http://steamcommunity.com/sharedfiles/filedetails/\?id=' tmp/workshopPages/list_* | sed 's/.*?id=//' | sed 's/&.*//' | sort -un > tmp/IDList.txt
+grep '"appid":211820' tmp/workshopPages/list_* | grep -Eo '"id":"[^"]+"' | sed -r 's/.*"([0-9]+)"$/\1/' | sort -un > tmp/IDList.txt
+#grep -E '^	*<a href="http://steamcommunity.com/sharedfiles/filedetails/\?id=' tmp/workshopPages/list_* | sed 's/.*?id=//' | sed 's/&.*//' | sort -un > tmp/IDList.txt
 echo "[INFO]: - Complete with $(wc -l tmp/IDList.txt | sed 's/ .*//') mod IDs."
 
 echo "[INFO]: Completed at $(date)."
