@@ -26,7 +26,7 @@ cat tmp/IDList.txt | while read ID ; do
 done
 echo "quit" >> "$SCRIPT"
 
-echo "[INFO]: Running script. This'll take a while... possibly over a day, depending on your connection."
+echo "[INFO]: Running script. This'll take a while... possibly over a day, depending on your connection. Do not log back into Steam while this is running."
 "${SCMDDIR}/steamcmd.sh" +runscript "../${SCRIPT}"
 
 echo "[INFO]: Completed on $(date)."
